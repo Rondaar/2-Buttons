@@ -22,9 +22,10 @@ public class EngineHandler : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         CanMove = false;
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+
+    // Update is called once per frame
+    void FixedUpdate ()
     {
         if (CanMove)
         {
