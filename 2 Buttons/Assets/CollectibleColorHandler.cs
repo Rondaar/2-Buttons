@@ -7,10 +7,12 @@ public class CollectibleColorHandler : MonoBehaviour {
     SpriteRenderer sprRndr;
     Color initColor;
     GameObject player;
+    ParticleSystem ps;
 
     private void Awake()
     {
         sprRndr = GetComponent<SpriteRenderer>();
+        ps = GetComponent<ParticleSystem>();
     }
     // Use this for initialization
     void Start () {
@@ -19,11 +21,13 @@ public class CollectibleColorHandler : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         float dist = FitInScreenHelper.GetDistance(transform.position, player.transform.position);
         // sprRndr.color = initColor * dist + Color.white*(1-dist)*Color.magenta*(1-dist);
 
-            sprRndr.color = initColor * dist + Color.white * (1 - dist);
+        sprRndr.color = initColor * dist + Color.white * (1 - dist);
+        ps.startColor = sprRndr.color;
         
 	}
 }

@@ -28,11 +28,12 @@ public class AttackHandler : MonoBehaviour {
         {
             ready = true;
             chargingTime += Time.deltaTime;
+            Attract();
         }
         if (ready && Mathf.Abs(rb.angularVelocity) < 300)
         {
             ready = false;
-            Attack(chargingTime);
+            //Attack(chargingTime);
             chargingTime = 0;         
         }
 	}
@@ -46,5 +47,13 @@ public class AttackHandler : MonoBehaviour {
         GameObject field = Instantiate(fieldPrefab);
         field.transform.position = transform.position;
         field.transform.localScale = Vector3.one * force * 5;
+    }
+
+    void Attract()
+    {
+        foreach(GameObject attractable in GameObject.FindGameObjectsWithTag("Attractable"))
+        {
+            attractable.GetComponent<Rigidbody2D>().AddForce((FitInScreenHelper.GetDirection(transform.position, attractable.transform.position).normalized*20f*Time.deltaTime));
+        }
     }
 }
