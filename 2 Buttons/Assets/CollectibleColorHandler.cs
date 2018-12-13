@@ -8,6 +8,7 @@ public class CollectibleColorHandler : MonoBehaviour {
     Color initColor;
     GameObject player;
     ParticleSystem ps;
+    float dist;
 
     private void Awake()
     {
@@ -23,7 +24,9 @@ public class CollectibleColorHandler : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        float dist = FitInScreenHelper.GetDistance(transform.position, player.transform.position);
+
+        if (player!=null)
+          dist = FitInScreenHelper.GetDistance(transform.position, player.transform.position);
         // sprRndr.color = initColor * dist + Color.white*(1-dist)*Color.magenta*(1-dist);
 
         sprRndr.color = initColor * dist + Color.white * (1 - dist);

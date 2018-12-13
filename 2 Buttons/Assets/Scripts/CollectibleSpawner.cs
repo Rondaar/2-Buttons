@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class CollectibleSpawner : Spawner
 {
+    EnemySpawner enemySpawner;
+
+    private void Awake()
+    {
+        enemySpawner = GetComponent<EnemySpawner>();
+    }
+
     public override void Spawn()
     {
         Vector3 pos;
@@ -14,5 +21,6 @@ public class CollectibleSpawner : Spawner
         instance.transform.position = Camera.main.ViewportToWorldPoint(pos);
         instance.transform.position = new Vector3(instance.transform.position.x, instance.transform.position.y, 0);
         instance.GetComponent<Collectible>().MySpawner = this;
+        enemySpawner.CheckForSpawn();
     }
 }

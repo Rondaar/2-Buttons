@@ -14,15 +14,14 @@ public class Asteroid : MonoBehaviour {
     {
         transform.rotation = Quaternion.AngleAxis( Random.Range(0f, 360f),Vector3.forward);
         rb.AddForce(transform.up * 2.4f, ForceMode2D.Impulse);
-        rb.AddTorque(Random.Range(15f,30f));
+        rb.AddTorque(Random.Range(-30f,30f));
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.T))
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
         {
-            
-            Debug.Log("asd");
+            collision.GetComponent<TimerHandler>().TimeLeft -= 100f;
         }
     }
 }

@@ -44,13 +44,15 @@ public class TrailHandler : MonoBehaviour {
             yield return null;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "DeathWall") Destroy(gameObject);
-    }
+
     private void OnDestroy()
     {
         if (playerRb!=null)
             playerRb.GetComponent<TrailManager>().Trails.Remove(this);
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

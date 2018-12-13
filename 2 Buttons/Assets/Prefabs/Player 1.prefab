@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 114996397663045914}
   - component: {fileID: 114915077497966834}
   - component: {fileID: 114939590768490462}
+  - component: {fileID: 114710800902272722}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -302,6 +303,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09502a49622d83249bb8697af130fba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114710800902272722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778216457510218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdb153cb63aa824da7e48a9cb091292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114915077497966834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,8 +338,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angularVelocityTreshold: 500
-  fieldPrefab: {fileID: 1359661698262550, guid: ab4bbf03dd8a904428d7bd6560e96067,
-    type: 2}
 --- !u!114 &114996397663045914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,7 +350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 10
-  timePenaltyMultiplayer: 1.1
+  timeProgressAmount: 0.025
+  maxTimePenalty: 2
 --- !u!114 &114998260778619370
 MonoBehaviour:
   m_ObjectHideFlags: 1

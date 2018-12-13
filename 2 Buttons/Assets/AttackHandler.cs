@@ -4,56 +4,39 @@ using UnityEngine;
 
 public class AttackHandler : MonoBehaviour {
     [SerializeField]
-    float angularVelocityTreshold = 500;
-    [SerializeField]
-    GameObject fieldPrefab;
+    GameObject misslePrefab;
 
-    bool ready=false;
-    float chargingTime = 0;
-    Rigidbody2D rb;
-    // Use this for initialization
-    private void Awake()
+    PlayerInput input;
+    bool canAttack = true;
+	// Use this for initialization
+	void Awake ()
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
-    void Start ()
-    {
-	    	
+        input = GetComponent<PlayerInput>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Mathf.Abs(rb.angularVelocity) > angularVelocityTreshold)
+		if (input.Left==0 && input.Right== 0)
         {
-            ready = true;
-            chargingTime += Time.deltaTime;
-            Attract();
+            if (canAttack)
+            {
+                Attack();
+                canAttack = false;
+            }
         }
-        if (ready && Mathf.Abs(rb.angularVelocity) < 300)
+        else
         {
-            ready = false;
-            //Attack(chargingTime);
-            chargingTime = 0;         
+            canAttack = true;
         }
 	}
 
-    void Attack(float force)
+    void Attack()
     {
-        if (force>3)
-        {
-            force = 3;
-        }
-        GameObject field = Instantiate(fieldPrefab);
-        field.transform.position = transform.position;
-        field.transform.localScale = Vector3.one * force * 5;
-    }
-
-    void Attract()
-    {
-        foreach(GameObject attractable in GameObject.FindGameObjectsWithTag("Attractable"))
-        {
-            attractable.GetComponent<Rigidbody2D>().AddForce((FitInScreenHelper.GetDirection(transform.position, attractable.transform.position).normalized*20f*Time.deltaTime));
-        }
+        GameObject instance = Instantiate(misslePrefab);
+        instance.transform.position = transform.position + transform.up/4;
+        instance.transform.rotation = transform.rotation;
+        instance.GetComponent<Missle>().MySpawner = gameObject;
+        instance.GetComponent<Missle>().Shoot();
     }
 }

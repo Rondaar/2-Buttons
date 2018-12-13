@@ -8,7 +8,13 @@ public class TimerHandler : MonoBehaviour
     [SerializeField]
     float maxTime=10;
     [SerializeField]
-    float timePenaltyMultiplayer = 1.1f;
+    [Range(0, 1)]
+    float timeProgressAmount= 0.025f;
+    [SerializeField]
+    float maxTimePenalty = 2f;
+
+    float timePenaltyProgress = 0.05f;
+    float timePenalty;
     float timeLeft; 
     List<Slider> sliders;
     bool gameStarted;
@@ -31,8 +37,6 @@ public class TimerHandler : MonoBehaviour
         }
     }
 
-    public float Multiplayer { get; set; }
-
     public float TimeLeft
     {
         get
@@ -43,14 +47,18 @@ public class TimerHandler : MonoBehaviour
         {
             timeLeft = Mathf.Min(value, maxTime);
             if (value > 0)
-                Multiplayer *= timePenaltyMultiplayer;
+            {
+                timePenaltyProgress += timeProgressAmount;
+                timePenalty = Mathf.SmoothStep(0,maxTimePenalty,timePenaltyProgress) ;
+            }
         }
     }
 	// Use this for initialization
 	void Start ()
     {
-        Multiplayer = .25f;
         timeLeft = maxTime;
+        timePenaltyProgress = timeProgressAmount;
+        timePenalty = Mathf.SmoothStep(0, maxTimePenalty, timePenaltyProgress);
         GameMaster.instance.OnGameBegin += GameStarted;
 	}
 
@@ -63,7 +71,7 @@ public class TimerHandler : MonoBehaviour
     {
         if (gameStarted)
         {
-            timeLeft -= Time.deltaTime * Multiplayer;
+            timeLeft -= Time.deltaTime * timePenalty;
             foreach (Slider slider in sliders)
             {
                 slider.value = timeLeft;
