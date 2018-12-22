@@ -75,7 +75,7 @@ public class GameMaster : MonoBehaviour
 
     void ChooseGameMode()
     {
-        if (Input.touchCount>0)
+        if (Input.touchCount>0||Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
         {
             leftOption.GetComponent<ChooseAnimation>().StartAnimation();
             sp.GetComponent<Option>().Action();
