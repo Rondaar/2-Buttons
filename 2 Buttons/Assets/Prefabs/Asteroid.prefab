@@ -112,6 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734b7a1782d8ae14ea4b46d2fdf1b959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBonus: 1
+  deathEffect: {fileID: 1094383194770312, guid: ace0416b99bf06a449d0aa3102a28f46,
+    type: 2}
 --- !u!114 &114695384574694180
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,6 +8,12 @@ public abstract class GameController : Option {
     [SerializeField]
     Text countdownText;
     int countdown = 3;
+    [SerializeField]
+    GameObject[] stuffToDestroy;
+    [SerializeField]
+    AudioClip goSnd;
+    [SerializeField]
+    AudioSource audioSrc;
 
     public virtual void GameOver() { }
 
@@ -19,6 +25,10 @@ public abstract class GameController : Option {
     }
     protected virtual void Begin()
     {
+        foreach(GameObject item in stuffToDestroy)
+        {
+            Destroy(item);
+        }
         GameMaster.instance.GameBegin();
     }
     protected IEnumerator Countdown(float tickTime)
@@ -27,10 +37,13 @@ public abstract class GameController : Option {
         {
             countdownText.text = (countdown--).ToString();
             anim.SetTrigger("tick");
+            audioSrc.Play();
             yield return new WaitForSeconds(tickTime);
         }
         anim.SetTrigger("tick");
         countdownText.text = "GO";
+        audioSrc.clip = goSnd;
+        audioSrc.Play();
         yield return new WaitForSeconds(tickTime);
         countdownText.text = "";
         Begin();

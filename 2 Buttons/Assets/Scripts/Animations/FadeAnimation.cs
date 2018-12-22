@@ -30,6 +30,11 @@ public class FadeAnimation : MyAnimation
         float time = 0;
         float perc = 0;
         float startAlpha = image.color.a;
+        Text[] myTexts = GetComponentsInChildren<Text>();
+        foreach (Text text in myTexts)
+        {
+            text.text = "";
+        }
         while (perc < 1)
         {
 

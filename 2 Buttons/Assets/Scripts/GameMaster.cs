@@ -19,7 +19,23 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     MultiPlayerController mp;
 
+    int level = 0;
     public float ScreenOffset { get; set; }
+    public int Level
+    {
+        get
+        {
+            return level;
+        }
+        set
+        {
+            level = value;
+            if (level%5==0)
+            {
+                Camera.main.GetComponent<MyAnimation>().StartAnimation();
+            }
+        }
+    }
 
     enum GameState { ChoosingGamemode, Playing, GameOver,Restart }
     GameState currState = GameState.ChoosingGamemode;
@@ -59,7 +75,7 @@ public class GameMaster : MonoBehaviour
 
     void ChooseGameMode()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.touchCount>0)
         {
             leftOption.GetComponent<ChooseAnimation>().StartAnimation();
             sp.GetComponent<Option>().Action();
@@ -67,7 +83,7 @@ public class GameMaster : MonoBehaviour
             Destroy(mp.gameObject);
             currState = GameState.Playing;
         }
-        else if (Input.GetButtonDown("Fire2"))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             rightOption.GetComponent<ChooseAnimation>().StartAnimation();
             mp.GetComponent<Option>().Action();

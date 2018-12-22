@@ -9,7 +9,7 @@ public class EngineHandler : MonoBehaviour {
     float force = 200f;
     [SerializeField]
     float rotationSpeed = 2f;
-    PlayerInput input;
+    InputBehaviour input;
     Rigidbody2D rb;
     int dirPrev;
     int lastDir=0;
@@ -18,7 +18,7 @@ public class EngineHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        input = GetComponent<PlayerInput>();
+        input = GetComponent<InputBehaviour>();
         rb = GetComponent<Rigidbody2D>();
         CanMove = false;
 	}

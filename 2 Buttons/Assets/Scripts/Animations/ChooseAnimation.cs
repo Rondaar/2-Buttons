@@ -37,12 +37,18 @@ public class ChooseAnimation : MyAnimation {
         float perc = 0;
         endColor = image.color;
         endColor.a = 0;
+        Text[] myTexts =GetComponentsInChildren<Text>();
+        foreach (Text text in myTexts)
+        {
+            text.text ="";
+        }
         while (perc < 1)
         {
 
             time += Time.deltaTime;
             perc = time / duration;
             image.color = Color.Lerp(Color.white, endColor, animationCurve.Evaluate(perc));
+            
             transform.localPosition = Vector3.LerpUnclamped(startPosition, endPosition, animationCurve.Evaluate(perc));
             transform.localScale = Vector3.LerpUnclamped(startScale, endScale, animationCurve.Evaluate(perc));
             yield return null;

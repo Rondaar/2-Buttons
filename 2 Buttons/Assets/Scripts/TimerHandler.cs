@@ -9,7 +9,7 @@ public class TimerHandler : MonoBehaviour
     float maxTime=10;
     [SerializeField]
     [Range(0, 1)]
-    float timeProgressAmount= 0.025f;
+    float timeProgressAmount= 0.0125f;
     [SerializeField]
     float maxTimePenalty = 2f;
 
@@ -18,6 +18,7 @@ public class TimerHandler : MonoBehaviour
     float timeLeft; 
     List<Slider> sliders;
     bool gameStarted;
+    int lvl = 0;
 
     public List<Slider> Sliders
     {
@@ -49,16 +50,21 @@ public class TimerHandler : MonoBehaviour
             if (value > 0)
             {
                 timePenaltyProgress += timeProgressAmount;
-                timePenalty = Mathf.SmoothStep(0,maxTimePenalty,timePenaltyProgress) ;
+                lvl++;
+                if (lvl%5 == 0)
+                {
+                    timePenalty = Mathf.SmoothStep(0, maxTimePenalty, timePenaltyProgress);
+                }
+
             }
         }
     }
 	// Use this for initialization
 	void Start ()
     {
-        timeLeft = maxTime;
+        timeLeft = maxTime/4;
         timePenaltyProgress = timeProgressAmount;
-        timePenalty = Mathf.SmoothStep(0, maxTimePenalty, timePenaltyProgress);
+        timePenalty =Mathf.SmoothStep(0, maxTimePenalty, timePenaltyProgress);
         GameMaster.instance.OnGameBegin += GameStarted;
 	}
 
@@ -77,7 +83,16 @@ public class TimerHandler : MonoBehaviour
                 slider.value = timeLeft;
             }
             if (timeLeft <= 0)
+            {
+                GetComponentInChildren<TrailRenderer>().transform.SetParent(null);
+                MultiPlayerController mpc = FindObjectOfType<MultiPlayerController>();
+                if (mpc!=null) mpc.Looser = gameObject;
+                GameMaster.instance.GameOver();
+                GetComponent<PlayerDeathParticlesController>().SpawnEffect();
                 Destroy(gameObject);
+
+            }
+                
         }
     }
 
@@ -86,9 +101,4 @@ public class TimerHandler : MonoBehaviour
         gameStarted = true;
     }
 
-    private void OnDestroy()
-    {
-        GetComponentInChildren<TrailRenderer>().transform.SetParent(null);
-        GameMaster.instance.GameOver();
-    }
 }

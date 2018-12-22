@@ -37,8 +37,10 @@ public class ScoreController : MonoBehaviour {
     private void OnDestroy()
     {
         Destroy(scoreAnim);
-        scoreText.text = score.ToString();
-        scoreText.GetComponent<FadeAnimationText>().StartAnimation();
-        scoreText.GetComponent<ChangePosAndScaleAnimation>().StartAnimation();       
+        if (scoreText != null) {    
+            scoreText.text = score.ToString();
+            scoreText.GetComponent<FadeAnimationText>().StartAnimation();
+            scoreText.GetComponent<ChangePosAndScaleAnimation>().StartAnimation();
+        }
     }
 }

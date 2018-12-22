@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4289927668254816}
   - component: {fileID: 96557287964402546}
-  - component: {fileID: 61415580437261566}
   - component: {fileID: 114998260778619370}
   m_Layer: 0
   m_Name: trail
@@ -38,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4379901295061546}
   - component: {fileID: 212397741761555792}
-  - component: {fileID: 114657452396510442}
   - component: {fileID: 50912224879085430}
   - component: {fileID: 114415330825235438}
   - component: {fileID: 114644126223078758}
@@ -48,6 +46,10 @@ GameObject:
   - component: {fileID: 114915077497966834}
   - component: {fileID: 114939590768490462}
   - component: {fileID: 114710800902272722}
+  - component: {fileID: 95871710000583062}
+  - component: {fileID: 114349710930700928}
+  - component: {fileID: 114344429130306650}
+  - component: {fileID: 114971773955673190}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -129,31 +131,24 @@ PolygonCollider2D:
     - - {x: 0, y: 0.2}
       - {x: 0.22, y: -0.2}
       - {x: -0.22, y: -0.2}
---- !u!61 &61415580437261566
-BoxCollider2D:
+--- !u!95 &95871710000583062
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1753171185386768}
+  m_GameObject: {fileID: 1778216457510218}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.01}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.53}
-  m_EdgeRadius: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8d671a2a5ab4024a9c36aef9ade2b20, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!96 &96557287964402546
 TrailRenderer:
   serializedVersion: 2
@@ -187,8 +182,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1256454413
+  m_SortingLayer: -2
   m_SortingOrder: -1
   m_Time: 0.25
   m_Parameters:
@@ -267,6 +262,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0.45, z: 0}
+--- !u!114 &114344429130306650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778216457510218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2c7339907101a4c9113d9444b0d281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pref: {fileID: 1094383194770312, guid: 4a14e5685984e13498e8782ccdfd96eb, type: 2}
+--- !u!114 &114349710930700928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778216457510218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78fa4d8f4f7b61346be5f58567d349a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114415330825235438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,17 +308,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfd2b77843b0c8f45bab14a9c4387088, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114657452396510442
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778216457510218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09502a49622d83249bb8697af130fba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114710800902272722
@@ -338,6 +345,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angularVelocityTreshold: 500
+--- !u!114 &114971773955673190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778216457510218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c192542e84f6c648acaf774a1e0ea8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114996397663045914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -349,9 +367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54e66346fdec7d4f9b3fdfac209a43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 10
-  timeProgressAmount: 0.025
-  maxTimePenalty: 2
+  maxTime: 50
+  timeProgressAmount: 0.05
+  maxTimePenalty: 1.8
 --- !u!114 &114998260778619370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -395,8 +413,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1256454413
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6afb4f628a8f1d544b2a9296d9e7f0d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
