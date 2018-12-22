@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MyAnimation : MonoBehaviour {
+public class MyAnimation : MonoBehaviour 
+{
     [SerializeField]
     MyAnimation[] nextAnimations;
 
-    public abstract void StartAnimation();
+    public bool IsPlaying 
+    {
+        get;
+        set;
+    }
+
+    public virtual void StartAnimation()
+    {
+        IsPlaying = true;
+    }
     protected void PlayNextAnim()
     {
         foreach(MyAnimation anim in nextAnimations)

@@ -42,6 +42,6 @@ public class ChangePosAndScaleAnimation : MyAnimation {
             transform.localScale = Vector3.LerpUnclamped(startScale, endScale, animationCurve.Evaluate(perc));
             yield return null;
         }
-
+        IsPlaying = false;
     }
 }

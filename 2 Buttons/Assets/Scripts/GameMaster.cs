@@ -9,7 +9,8 @@ public class GameMaster : MonoBehaviour
     public static GameMaster instance;
 
     #endregion
-
+    [SerializeField]
+    GameObject[] buttonsOnStart;
     [SerializeField]
     GameObject leftOption;
     [SerializeField]
@@ -37,8 +38,8 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    enum GameState { ChoosingGamemode, Playing, GameOver,Restart }
-    GameState currState = GameState.ChoosingGamemode;
+    public enum GameState { ChoosingGamemode, Playing, GameOver,Restart }
+    public GameState currState = GameState.ChoosingGamemode;
 
     private void Awake()
     {
@@ -49,8 +50,12 @@ public class GameMaster : MonoBehaviour
     void Start ()
     {
         ScreenOffset = 0.025f;
-        leftOption.GetComponent<SlideInAnimation>().StartAnimation();
-        rightOption.GetComponent<SlideInAnimation>().StartAnimation();
+        //leftOption.GetComponent<SlideInAnimation>().StartAnimation();
+        //rightOption.GetComponent<SlideInAnimation>().StartAnimation();
+        foreach(GameObject button in buttonsOnStart)
+        {
+            button.GetComponent<SlideInAnimation>().StartAnimation();
+        }
 	}
 	
 	// Update is called once per frame
@@ -58,7 +63,7 @@ public class GameMaster : MonoBehaviour
     {
         if (currState == GameState.ChoosingGamemode)
         {
-            ChooseGameMode();
+           // ChooseGameMode();
         }else if (currState == GameState.Restart)
         {
             CheckForRestartGame();

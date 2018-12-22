@@ -54,5 +54,6 @@ public class ChooseAnimation : MyAnimation {
             yield return null;
         }
         gameObject.SetActive(false);
+        IsPlaying = false;
     }
 }

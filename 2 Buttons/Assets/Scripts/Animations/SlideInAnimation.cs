@@ -47,6 +47,6 @@ public class SlideInAnimation : MyAnimation {
             transform.localScale = Vector3.LerpUnclamped(startScale, endScale, animationCurve.Evaluate(perc));
             yield return null;
         }
-
+        IsPlaying = false;
     }
 }
