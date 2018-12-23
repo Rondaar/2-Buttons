@@ -26,6 +26,7 @@ public class MenuController : MonoBehaviour
         foreach (Button button in buttons)
         {
             button.GetComponent<SlideInAnimation>().StartAnimation();
+            button.interactable = true;
         }
     }
 }

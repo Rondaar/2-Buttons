@@ -33,7 +33,7 @@ public class FadeAnimation : MyAnimation
         Text[] myTexts = GetComponentsInChildren<Text>();
         foreach (Text text in myTexts)
         {
-            text.text = "";
+            text.color = new Color(text.color.r,text.color.g,text.color.b,0) ;
         }
         while (perc < 1)
         {
@@ -43,7 +43,6 @@ public class FadeAnimation : MyAnimation
             image.color = new Color(image.color.r,image.color.g,image.color.b,Mathf.LerpUnclamped(startAlpha, finalAlpha, animationCurve.Evaluate(perc)));
             yield return null;
         }
-        gameObject.SetActive(false);
         IsPlaying = false;
     }
 }

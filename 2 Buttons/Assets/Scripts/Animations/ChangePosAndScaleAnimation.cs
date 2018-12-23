@@ -15,6 +15,12 @@ public class ChangePosAndScaleAnimation : MyAnimation {
 
     Vector3 startScale;
     Vector3 startPosition;
+    RectTransform rectTransform;
+
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
 
     override public void StartAnimation()
     {
@@ -25,7 +31,7 @@ public class ChangePosAndScaleAnimation : MyAnimation {
     void SetupVariables()
     {
         startScale = transform.localScale;
-        startPosition = transform.localPosition;
+        startPosition = rectTransform.anchoredPosition;
     }
 
     IEnumerator Animate()
@@ -38,7 +44,7 @@ public class ChangePosAndScaleAnimation : MyAnimation {
 
             time += Time.deltaTime;
             perc = time / duration;
-            transform.localPosition = Vector3.LerpUnclamped(startPosition, endPosition, animationCurve.Evaluate(perc));
+            rectTransform.anchoredPosition = Vector3.LerpUnclamped(startPosition, endPosition, animationCurve.Evaluate(perc));
             transform.localScale = Vector3.LerpUnclamped(startScale, endScale, animationCurve.Evaluate(perc));
             yield return null;
         }
