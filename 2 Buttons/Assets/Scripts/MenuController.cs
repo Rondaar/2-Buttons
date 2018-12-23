@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonsManager : MonoBehaviour 
+public class MenuController : MonoBehaviour 
 {
 
     [SerializeField]
@@ -18,6 +18,14 @@ public class ButtonsManager : MonoBehaviour
                 button.GetComponent<FadeAnimation>().StartAnimation();
             }
             button.interactable = false;
+        }
+    }
+
+    public void DisplayMenu()
+    {
+        foreach (Button button in buttons)
+        {
+            button.GetComponent<SlideInAnimation>().StartAnimation();
         }
     }
 }
