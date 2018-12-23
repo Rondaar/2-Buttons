@@ -202,8 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 1312990030717142, guid: f83ddfadde319bc468fed5c670f3a151, type: 2}
   timeBonus: 3.5
-  deathEffect: {fileID: 1369800288721048, guid: 951a9bb3c4183fb4d87f17cc764eaf7e,
-    type: 2}
+  ringEffect: {fileID: 1369800288721048, guid: 951a9bb3c4183fb4d87f17cc764eaf7e, type: 2}
 --- !u!114 &114752380027624452
 MonoBehaviour:
   m_ObjectHideFlags: 1

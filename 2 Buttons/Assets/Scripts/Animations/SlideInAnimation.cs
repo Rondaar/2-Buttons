@@ -34,7 +34,10 @@ public class SlideInAnimation : MyAnimation {
     }
     override public void StartAnimation()
     {
-        if (defaultColor !=null && GetComponent<Image>()) GetComponent<Image>().color = defaultColor;
+        if (defaultColor != null && GetComponent<Image>())
+        {
+            GetComponent<Image>().color = defaultColor;
+        }
         foreach(Text text in GetComponentsInChildren<Text>())
         {
             text.color = new Color(text.color.r, text.color.g, text.color.b, 1);

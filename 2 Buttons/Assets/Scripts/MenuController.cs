@@ -18,6 +18,7 @@ public class MenuController : MonoBehaviour
                 button.GetComponent<FadeAnimation>().StartAnimation();
             }
             button.interactable = false;
+            button.GetComponent<Image>().raycastTarget = false;
         }
     }
 
@@ -27,6 +28,7 @@ public class MenuController : MonoBehaviour
         {
             button.GetComponent<SlideInAnimation>().StartAnimation();
             button.interactable = true;
+            button.GetComponent<Image>().raycastTarget = true;
         }
     }
 }
