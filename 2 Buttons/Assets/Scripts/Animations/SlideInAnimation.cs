@@ -34,6 +34,15 @@ public class SlideInAnimation : MyAnimation {
     }
     override public void StartAnimation()
     {
+        foreach(MyAnimation anim in GetComponents<MyAnimation>())
+        {
+            anim.StopAllCoroutines();
+        }
+        Button button = GetComponent<Button>();
+        if (button)
+        {
+            button.interactable = true;
+        }
         if (defaultColor != null && GetComponent<Image>())
         {
             GetComponent<Image>().color = defaultColor;

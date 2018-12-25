@@ -7,4 +7,5 @@ public class Skin : ScriptableObject
 {
     public Color characterColor;
     public Gradient trailCol;
+    public int cost = 10;
 }
