@@ -10,21 +10,35 @@ public class SkinButton : MonoBehaviour {
     string myKey;
     Text myText;
     SkinSelectionMenu skinSelection;
+    static SkinButton selectedSkinButton;
+    BounceAnimation bounceAnim;
 
     private void Awake()
     {
         myText = GetComponentInChildren<Text>();
+        bounceAnim = GetComponent<BounceAnimation>();
     }
 
-    public void Initialize(Skin skin,GameObject playerPref,SkinSelectionMenu skinSelection)
+    public void Initialize(Skin skin, GameObject playerPref, SkinSelectionMenu skinSelection)
     {
-        this.skinSelection = skinSelection; 
+        this.skinSelection = skinSelection;
         mySkin = skin;
         GetComponent<Image>().color = skin.characterColor;
         myKey = skin.characterColor.ToString();
-        if (PlayerPrefs.HasKey(myKey) && PlayerPrefs.GetInt(myKey) == 1)
+        if (PlayerPrefs.HasKey(myKey))
         {
-            myText.text = "unlocked";
+            if (PlayerPrefs.GetInt(myKey) == 1)
+                myText.text = "unlocked";
+            else if (PlayerPrefs.GetInt(myKey) == 2)
+            {
+                myText.text = "selected";
+                if (selectedSkinButton != null)
+                {
+                    selectedSkinButton.myText.text = "unlocked";
+                    PlayerPrefs.SetInt(selectedSkinButton.myKey, 1);
+                }
+                selectedSkinButton = this;
+            }
         }
         else
         {
@@ -32,22 +46,40 @@ public class SkinButton : MonoBehaviour {
         }
         this.playerPref = playerPref;
     }
-    public void SetSkin()
+    public void SkinTransaction()
     {
         if (PlayerPrefs.GetInt(myKey) == 1)
         {
-            playerPref.GetComponent<SpriteRenderer>().color = mySkin.characterColor;
-            playerPref.GetComponentInChildren<TrailRenderer>().colorGradient = mySkin.trailCol;
-            Debug.Log(playerPref.GetComponent<SpriteRenderer>().color);
+            SetSkin();
         }
-        else if (GameData.Credits>= mySkin.cost)
+        else if (GameData.Credits >= mySkin.cost)
         {
-            GameData.Credits -= mySkin.cost;
-            PlayerPrefs.SetInt(myKey, 1);
-            myText.text = "unclocked";
-            //creditText.text = GameData.Credits.ToString();
-            skinSelection.SetCreditsText();
+            //disp buy skin
+            skinSelection.DispBuySkin();
+            FindObjectOfType<SkinTransactionButton>().MySkinButton = this;
         }
 
+    }
+
+    public void SetSkin()
+    {
+        playerPref.GetComponent<SpriteRenderer>().color = mySkin.characterColor;
+        playerPref.GetComponentInChildren<TrailRenderer>().colorGradient = mySkin.trailCol;
+        myText.text = "selected";
+        PlayerPrefs.SetInt(myKey, 2);
+        if (selectedSkinButton != null)
+        {
+            selectedSkinButton.myText.text = "unlocked";
+            PlayerPrefs.SetInt(selectedSkinButton.myKey, 1);
+        }
+        selectedSkinButton = this;
+        bounceAnim.StartAnimation();
+    }
+
+    public void BuySkin()
+    {
+        GameData.Credits -= mySkin.cost;
+        skinSelection.SetCreditsText();
+        SetSkin();
     }
 }

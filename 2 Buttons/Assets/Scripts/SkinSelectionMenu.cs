@@ -13,6 +13,10 @@ public class SkinSelectionMenu : MonoBehaviour {
     GameObject playerPref;
     [SerializeField]
     Text creditsText;
+    [SerializeField]
+    GameObject buySkinGui;
+    [SerializeField]
+    GameObject skinSelectionGui;
 	// Use this for initialization
 	void Start () 
     {
@@ -27,5 +31,17 @@ public class SkinSelectionMenu : MonoBehaviour {
 	public void SetCreditsText()
     {
         creditsText.text = GameData.Credits + " credits";
+    }
+
+    public void DispBuySkin()
+    {
+        buySkinGui.SetActive(true);
+        skinSelectionGui.SetActive(false);
+    }
+
+    public void ReturnToSkinSelection()
+    {
+        buySkinGui.SetActive(false);
+        skinSelectionGui.SetActive(true);
     }
 }
