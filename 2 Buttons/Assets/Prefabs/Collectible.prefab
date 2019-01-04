@@ -213,8 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 1312990030717142, guid: f83ddfadde319bc468fed5c670f3a151, type: 2}
   timeBonus: 4
-  deathEffect: {fileID: 1369800288721048, guid: f5604f2f2fbb74d429b107d2f1303a93,
-    type: 2}
+  ringEffect: {fileID: 1369800288721048, guid: f5604f2f2fbb74d429b107d2f1303a93, type: 2}
 --- !u!198 &198215441420549538
 ParticleSystem:
   m_ObjectHideFlags: 1

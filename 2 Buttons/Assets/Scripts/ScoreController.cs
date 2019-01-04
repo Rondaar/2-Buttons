@@ -12,6 +12,7 @@ public class ScoreController : MonoBehaviour {
     Animator scoreAnim;
 
     private int score;
+
     public int Score
     {
         get
@@ -26,12 +27,26 @@ public class ScoreController : MonoBehaviour {
             scoreText.text = score.ToString();
         }
     }
+
+    private void Start()
+    {
+        GameMaster.instance.OnGameOver += AddPoints;
+    }
+
+    private void OnDisable()
+    {
+        GameMaster.instance.OnGameOver -= AddPoints;
+    }
+
+    void AddPoints()
+    {
+        GameData.Credits += score / 10;
+    }
     public void Initialize(Text scoreText)
     {
         this.scoreText = scoreText;
         score = 0;
         scoreAnim = scoreText.gameObject.GetComponent<Animator>();
-
     }
 
     private void OnDestroy()

@@ -14,17 +14,29 @@ public class InvincibleCollectible : Collectible
             collision.GetComponent<TimerHandler>().TimeLeft += timeBonus;
             collision.GetComponent<TrailManager>().IncrementTailTime(.25f);
             MySpawner.Spawn();
-            GameObject instance = Instantiate(deathEffect);
-            instance.transform.position = transform.position;
             collision.GetComponent<InvincibleHandler>().InvincibleModeStart();
-            Destroy(gameObject);
-
-            AudioSource audio = GetComponent<AudioSource>();
-            GameObject newSound = Instantiate(sound);
-            newSound.GetComponent<AudioSource>().clip = audio.clip;
-            newSound.GetComponent<AudioSource>().pitch *= Mathf.Pow(1.05946f, 7);
             GameMaster.instance.Level++;
-            newSound.GetComponent<MySound>().Play();
+            Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+
+    }
+
+    void SpawnRingEffect()
+    {
+        GameObject instance = Instantiate(ringEffect);
+        instance.transform.position = transform.position;
+
+
+
+        AudioSource audio = GetComponent<AudioSource>();
+        GameObject newSound = Instantiate(sound);
+        newSound.GetComponent<AudioSource>().clip = audio.clip;
+        newSound.GetComponent<AudioSource>().pitch *= Mathf.Pow(1.05946f, 7);
+
+        newSound.GetComponent<MySound>().Play();
     }
 }

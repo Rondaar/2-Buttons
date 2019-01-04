@@ -37,5 +37,6 @@ public class FadeAnimationText : MyAnimation
             yield return null;
         }
         PlayNextAnim();
+        IsPlaying = false;
     }
 }

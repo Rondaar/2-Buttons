@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class InvincibleHandler : MonoBehaviour {
 
-    Animator anim;
-
     public bool Invincible { get; private set; }
+
+    InvincibleAnimation invincAnim;
     // Use this for initialization
-    void Awake ()
+    private void Awake()
     {
-        anim = GetComponent<Animator>();
-	}
-	
+        invincAnim = GetComponent<InvincibleAnimation>();
+    }
+
     public void InvincibleModeStart()
     {
         Invincible = true;
-        anim.SetTrigger("invincible");
+        invincAnim.StartAnimation();
     }
 
     public void InvincibleModeEnd()

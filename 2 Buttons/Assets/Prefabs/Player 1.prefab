@@ -46,10 +46,10 @@ GameObject:
   - component: {fileID: 114915077497966834}
   - component: {fileID: 114939590768490462}
   - component: {fileID: 114710800902272722}
-  - component: {fileID: 95871710000583062}
   - component: {fileID: 114349710930700928}
   - component: {fileID: 114344429130306650}
-  - component: {fileID: 114971773955673190}
+  - component: {fileID: 114810727654772376}
+  - component: {fileID: 114213095957418986}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -131,24 +131,6 @@ PolygonCollider2D:
     - - {x: 0, y: 0.2}
       - {x: 0.22, y: -0.2}
       - {x: -0.22, y: -0.2}
---- !u!95 &95871710000583062
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778216457510218}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c8d671a2a5ab4024a9c36aef9ade2b20, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!96 &96557287964402546
 TrailRenderer:
   serializedVersion: 2
@@ -215,8 +197,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.42352942, g: 0.94509804, b: 0.9529412, a: 1}
+      key1: {r: 0.7254902, g: 0.94509804, b: 0.9529412, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -262,6 +244,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0.45, z: 0}
+--- !u!114 &114213095957418986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778216457510218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcbf328c57044f1c89acca4edf6b6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextAnimations: []
+  duration: 5
 --- !u!114 &114344429130306650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,6 +316,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfdb153cb63aa824da7e48a9cb091292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114810727654772376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778216457510218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09502a49622d83249bb8697af130fba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114915077497966834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,17 +351,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angularVelocityTreshold: 500
---- !u!114 &114971773955673190
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778216457510218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c192542e84f6c648acaf774a1e0ea8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114996397663045914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,7 +412,7 @@ SpriteRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6afb4f628a8f1d544b2a9296d9e7f0d8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.41960788, g: 0.9426021, b: 0.9529412, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -9,15 +9,10 @@ public class GameMaster : MonoBehaviour
     public static GameMaster instance;
 
     #endregion
-
-    [SerializeField]
-    GameObject leftOption;
-    [SerializeField]
-    GameObject rightOption;
     [SerializeField]
     SinglePlayerController sp;
     [SerializeField]
-    MultiPlayerController mp;
+    MenuController mainMenu;
 
     int level = 0;
     public float ScreenOffset { get; set; }
@@ -37,8 +32,8 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    enum GameState { ChoosingGamemode, Playing, GameOver,Restart }
-    GameState currState = GameState.ChoosingGamemode;
+    public enum GameState { ChoosingGamemode, Playing, GameOver,Restart }
+    public GameState currState = GameState.ChoosingGamemode;
 
     private void Awake()
     {
@@ -49,8 +44,7 @@ public class GameMaster : MonoBehaviour
     void Start ()
     {
         ScreenOffset = 0.025f;
-        leftOption.GetComponent<SlideInAnimation>().StartAnimation();
-        rightOption.GetComponent<SlideInAnimation>().StartAnimation();
+        DisplayMenu();
 	}
 	
 	// Update is called once per frame
@@ -58,13 +52,17 @@ public class GameMaster : MonoBehaviour
     {
         if (currState == GameState.ChoosingGamemode)
         {
-            ChooseGameMode();
         }else if (currState == GameState.Restart)
         {
             CheckForRestartGame();
         }
 	}
-    
+
+    void DisplayMenu()
+    {
+        mainMenu.DisplayMenu();
+    }
+
     void CheckForRestartGame()
     {
         if (Input.anyKeyDown)
@@ -73,25 +71,6 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    void ChooseGameMode()
-    {
-        if (Input.touchCount>0)
-        {
-            leftOption.GetComponent<ChooseAnimation>().StartAnimation();
-            sp.GetComponent<Option>().Action();
-            rightOption.GetComponent<FadeAnimation>().StartAnimation();  
-            Destroy(mp.gameObject);
-            currState = GameState.Playing;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            rightOption.GetComponent<ChooseAnimation>().StartAnimation();
-            mp.GetComponent<Option>().Action();
-            leftOption.GetComponent<FadeAnimation>().StartAnimation();
-            Destroy(sp.gameObject);
-            currState = GameState.Playing;
-        }
-    }
 
     public event System.Action OnGameOver;
     public event System.Action OnGameBegin;
