@@ -86,7 +86,10 @@ public class TimerHandler : MonoBehaviour
             {
                 GetComponentInChildren<TrailRenderer>().transform.SetParent(null);
                 MultiPlayerController mpc = FindObjectOfType<MultiPlayerController>();
-                if (mpc!=null) mpc.Looser = gameObject;
+                if (mpc != null)
+                {
+                    mpc.Looser = gameObject;
+                }
                 GameMaster.instance.GameOver();
                 GetComponent<PlayerDeathParticlesController>().SpawnEffect();
                 Destroy(gameObject);

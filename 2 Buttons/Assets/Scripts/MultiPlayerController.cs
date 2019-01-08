@@ -12,13 +12,11 @@ public class MultiPlayerController : GameController
     [SerializeField]
     Text scoreText;
     [SerializeField]
+    Text finalScoreText;
+    [SerializeField]
     CollectibleSpawner collectibleSp;
     [SerializeField]
     List<Slider> sliders;
-    [SerializeField]
-    Text score;
-    [SerializeField]
-    Text finalScoreText;
 
     public GameObject Looser { get; set; }
     GameObject player1;
@@ -62,6 +60,7 @@ public class MultiPlayerController : GameController
     {
         base.GameOver();
         GameObject winner;
+        scoreText.text = "asdf";
         if (Looser == player1)
         {
             winner = player2;
@@ -72,7 +71,7 @@ public class MultiPlayerController : GameController
             winner = player1;
             finalScoreText.text = "P1 has won with score:";
         }
-        score.text = winner.GetComponent<ScoreController>().Score.ToString();
+        // winner.GetComponent<ScoreController>().Score.ToString();
         winner.GetComponentInChildren<TrailRenderer>().transform.parent = null;
         winner.GetComponent<PlayerDeathParticlesController>().SpawnEffect();
         Destroy(winner);

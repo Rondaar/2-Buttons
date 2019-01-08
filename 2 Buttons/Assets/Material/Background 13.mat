@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Background 1
-  m_Shader: {fileID: 4800000, guid: c3c67fc772bf5344fa140d8a6d8bf16b, type: 3}
+  m_Name: Background 13
+  m_Shader: {fileID: 4800000, guid: 3d59c4ec4f930ba47a86bb3c99634289, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -39,9 +39,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7781b97e00d098c4f9f4ed1984f2172a, type: 3}
-        m_Scale: {x: 14, y: 14}
-        m_Offset: {x: 0, y: 0}
+        m_Texture: {fileID: 2800000, guid: 44e155cc21a87564298996ca05916189, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: -0.18, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -54,30 +54,40 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SecTex:
+        m_Texture: {fileID: 2800000, guid: 44e155cc21a87564298996ca05916189, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BlinkOffsetX: 0.25
+    - _BlinkOffsetX: -0.25
     - _BlinkOffsetY: 0
-    - _BlinkSpeed: 1
+    - _BlinkSpeed: 0.1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DropLength: 1.1
+    - _DropOffset: 16.04
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _LineLength: -2.25
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ScrollSpeedX: 2
-    - _ScrollSpeedY: 1.5
+    - _ScrollSpeedX: 0.2
+    - _ScrollSpeedX2: -0.2
+    - _ScrollSpeedY: 0.2
+    - _ScrollSpeedY2: -0.2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BackgroundColor: {r: 0.08659667, g: 0.13207549, b: 0.0879062, a: 1}
+    - _BackgroundColor: {r: 0.9504614, g: 0.9528302, b: 0.7505785, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DotColor: {r: 0.19090426, g: 0.20754719, b: 0.19090426, a: 1}
+    - _DotColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
+    - _DotColor2: {r: 0.14901961, g: 0.14901961, b: 0.14901961, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

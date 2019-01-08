@@ -22,7 +22,7 @@ public class InvincibleCollectible : Collectible
 
     private void Start()
     {
-
+        SpawnRingEffect();
     }
 
     void SpawnRingEffect()
