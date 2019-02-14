@@ -32,6 +32,9 @@ public class GameMaster : MonoBehaviour
         }
     }
 
+    static string currSkinKey="currSkin";
+    public string GetCurrSkinKey() { return currSkinKey; }
+
     public enum GameState { ChoosingGamemode, Playing, GameOver,Restart }
     public GameState currState = GameState.ChoosingGamemode;
 
@@ -45,7 +48,13 @@ public class GameMaster : MonoBehaviour
     {
         ScreenOffset = 0.025f;
         DisplayMenu();
-	}
+        if (!PlayerPrefs.HasKey(currSkinKey))
+        {
+            PlayerPrefs.SetInt(Color.white.ToString(), 2);
+            PlayerPrefs.SetString(currSkinKey, Color.white.ToString());
+        }
+
+    }
 	
 	// Update is called once per frame
 	void Update ()

@@ -73,9 +73,9 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ScrollSpeedX: 1.31
+    - _ScrollSpeedX: 0.36
     - _ScrollSpeedX2: -0.25
-    - _ScrollSpeedY: 1
+    - _ScrollSpeedY: 0.28
     - _ScrollSpeedY2: -0.73
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

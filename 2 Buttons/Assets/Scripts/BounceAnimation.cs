@@ -23,8 +23,10 @@ public class BounceAnimation : MyAnimation
         {
             anim.StopAllCoroutines();
         }
-        
-        StartCoroutine(Animate());
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(Animate());
+        }
     }
 
     void SetupVariables()

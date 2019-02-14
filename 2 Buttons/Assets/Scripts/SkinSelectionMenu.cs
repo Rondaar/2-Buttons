@@ -30,7 +30,7 @@ public class SkinSelectionMenu : MonoBehaviour {
 	// Update is called once per frame
 	public void SetCreditsText()
     {
-        creditsText.text = GameData.Credits + " credits";
+        creditsText.text =  "credits: " + GameData.Credits;
     }
 
     public void DispBuySkin()

@@ -35,7 +35,7 @@ public class AttractHandler : MonoBehaviour {
     {
         foreach(GameObject attractable in GameObject.FindGameObjectsWithTag("Attractable"))
         {
-            attractable.GetComponent<Rigidbody2D>().AddForce((FitInScreenHelper.GetDirection(transform.position, attractable.transform.position).normalized*35f*Time.deltaTime));
+            attractable.GetComponent<Rigidbody2D>().AddForce((FitInScreenHelper.GetDirection(transform.position, attractable.transform.position)*35f*Time.deltaTime));
         }
     }
 }

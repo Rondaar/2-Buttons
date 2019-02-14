@@ -33,15 +33,15 @@ public class FitInScreenHelper : MonoBehaviour {
         distVector.x = pos1.x - pos2.x;
         if (Mathf.Abs(distVector.x) > width / 2f)
         {
-            distVector.x = width - distVector.x;
-
+            distVector.x = - distVector.x;
+            //Debug.Log(distVector.x);
         }
         distVector.y = pos1.y - pos2.y;
         if (Mathf.Abs(distVector.y) > width / 2f)
         {
-            distVector.y = width - distVector.y;
+            distVector.y =  - distVector.y;
 
         }
-        return distVector;
+        return distVector.normalized;
     }
 }

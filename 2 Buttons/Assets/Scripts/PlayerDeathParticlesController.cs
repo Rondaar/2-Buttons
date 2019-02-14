@@ -10,5 +10,6 @@ public class PlayerDeathParticlesController : MonoBehaviour {
     {
         GameObject instance = Instantiate(pref);
         instance.transform.position = transform.position;
+        instance.GetComponent<ParticleSystem>().startColor = GetComponent<SpriteRenderer>().color;
     }
 }

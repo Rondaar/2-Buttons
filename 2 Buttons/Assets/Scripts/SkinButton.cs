@@ -25,6 +25,7 @@ public class SkinButton : MonoBehaviour {
         mySkin = skin;
         GetComponent<Image>().color = skin.characterColor;
         myKey = skin.characterColor.ToString();
+ 
         if (PlayerPrefs.HasKey(myKey))
         {
             if (PlayerPrefs.GetInt(myKey) == 1)
@@ -32,6 +33,8 @@ public class SkinButton : MonoBehaviour {
             else if (PlayerPrefs.GetInt(myKey) == 2)
             {
                 myText.text = "selected";
+                playerPref.GetComponent<SpriteRenderer>().color = mySkin.characterColor;
+                playerPref.GetComponentInChildren<TrailRenderer>().colorGradient = mySkin.trailCol;
                 if (selectedSkinButton != null)
                 {
                     selectedSkinButton.myText.text = "unlocked";
@@ -74,6 +77,8 @@ public class SkinButton : MonoBehaviour {
         }
         selectedSkinButton = this;
         bounceAnim.StartAnimation();
+       
+        PlayerPrefs.SetString(GameMaster.instance.GetCurrSkinKey(), myKey);
     }
 
     public void BuySkin()
